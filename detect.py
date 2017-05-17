@@ -11,15 +11,6 @@ documentation
 from imutils.object_detection import non_max_suppression
 import numpy as np
 import cv2
-# import argparse
-
-"""
-# Argument Parser
-ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--image", required=True, help="Name of clip image")
-args = vars(ap.parse_args())
-image = cv2.imread(args["image"])
-"""
 
 
 def wideReciever(image):
@@ -44,7 +35,4 @@ def wideReciever(image):
     bbox = (pick[idx, 0], pick[idx, 1], pick[idx, 2]-pick[idx, 0],
             pick[idx, 3]-pick[idx, 1])
     return bbox
-"""
-# Main
-wideReciever(image)
-"""
+

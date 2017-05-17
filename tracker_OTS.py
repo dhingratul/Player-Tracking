@@ -7,7 +7,6 @@ Created on Thu May 11 15:42:58 2017
 Track a player annotated with Bounded box using OpenCV example and
 pyimagesearch
 """
-
 import cv2
 import sys
 import argparse
@@ -23,22 +22,14 @@ if __name__ == '__main__':
         print("Could not open video")
         sys.exit()
     frame_init, frame = video.read()
-    # cv2.imshow("First frame", frame)
     if ctr == 0:
-        # cv2.imwrite((args["video"]+'.png'), frame)
+        # Define an initial bounding box
         bbox = dt.wideReciever(frame)
-        # print("BBOX from Detect{}".format(bbox))
         ctr = 1
     if not frame_init:
         print('Error: Cannot read video file')
         sys.exit()
 
-    # Define an initial bounding box
-
-    # Manual annotatation to select the person of interest
-    #bbox = cv2.selectROI(frame, False)
-    #print("BBOx from Select{}".format(bbox))
-    # Initialize tracker with first frame and bounding box
     ok = tracker.init(frame, bbox)
     while True:
         # Read a new frame
@@ -47,7 +38,6 @@ if __name__ == '__main__':
             break
         # Update tracker
         frame_update, bbox = tracker.update(frame)
-
         # Draw bounding box
         if frame_update:
             p1 = (int(bbox[0]), int(bbox[1]))
