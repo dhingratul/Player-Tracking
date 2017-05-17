@@ -14,7 +14,6 @@ import cv2
 
 
 def wideReciever(image):
-    # print("Dimesions of image in Detect {}".format(image.shape))
     hog = cv2.HOGDescriptor()
     hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
     orig = image.copy()
