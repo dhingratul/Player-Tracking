@@ -4,26 +4,37 @@
 Created on Thu May 11 15:42:58 2017
 
 @author: dhingratul
-Track a player annotated with Bounded box using OpenCV example
+Track a player annotated with Bounded box using OpenCV example and
+pyimagesearch
 """
 
 import cv2
 import sys
+import argparse
+# import detect as dt
 if __name__ == '__main__':
-
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-v", "--video", required=True, help="Name of video clip")
+    args = vars(ap.parse_args())
+    ctr = 0
     tracker = cv2.Tracker_create("KCF")
-    video = cv2.VideoCapture("clip.mp4")
+    video = cv2.VideoCapture(args["video"])
     if not video.isOpened():
         print("Could not open video")
         sys.exit()
     frame_init, frame = video.read()
+    # cv2.imshow("First frame", frame)
+    if ctr == 0:
+        cv2.imwrite((args["video"]+'.png'), frame)
+        # bbox = dt.wideReciever(frame)
+        # ctr = 1
     if not frame_init:
         print('Error: Cannot read video file')
         sys.exit()
 
     # Define an initial bounding box
-    # bbox = (287, 23, 86, 320)
 
+    # Manual annotatation to select the person of interest
     bbox = cv2.selectROI(frame, False)
     # Initialize tracker with first frame and bounding box
     ok = tracker.init(frame, bbox)
