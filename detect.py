@@ -40,11 +40,9 @@ def wideReciever(image):
     idx = np.argmax(pick[:, 1])
     cv2.rectangle(image, (pick[idx, 0], pick[idx, 1]), (pick[idx, 2],
                   pick[idx, 3]), (0, 255, 0), 2)
-    bbox = (pick[idx, 0], pick[idx, 1], pick[idx, 2], pick[idx, 3])
-     print("BBOX from Detect {}".format(bbox))
-    # Display
-    # cv2.imshow("Detections", image)
-    # cv2.waitKey(0)
+    # Return it as x,y,w,h
+    bbox = (pick[idx, 0], pick[idx, 1], pick[idx, 2]-pick[idx, 0],
+            pick[idx, 3]-pick[idx, 1])
     return bbox
 """
 # Main
