@@ -27,7 +27,7 @@ def wideReciever(image):
     pick = non_max_suppression(rects, probs=None, overlapThresh=0.65)
 
     # Wide Reciever: The one with the maximum x-cordinate
-    idx = np.argmax(pick[:, 1])
+    idx = np.argmax(pick[:, 3])
     cv2.rectangle(image, (pick[idx, 0], pick[idx, 1]), (pick[idx, 2],
                   pick[idx, 3]), (0, 255, 0), 2)
     # Return it as x,y,w,h
