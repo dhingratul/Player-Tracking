@@ -4,8 +4,15 @@
 Created on Thu May 11 13:00:50 2017
 
 @author: dhingratul
-Detects the wide reciever, method adapted from pyimagesearch and OpenCV
-documentation
+Helper function to detect the first instance of bounding box for the wide
+reciever based on location
+
+Dependencies:imutils
+
+Usage: Run from tracker_OTS.py
+
+Input: Image
+Output: Bounding Box for first detection
 """
 
 from imutils.object_detection import non_max_suppression
@@ -34,4 +41,3 @@ def wideReciever(image):
     bbox = (pick[idx, 0], pick[idx, 1], pick[idx, 2]-pick[idx, 0],
             pick[idx, 3]-pick[idx, 1])
     return bbox
-

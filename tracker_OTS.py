@@ -4,8 +4,15 @@
 Created on Thu May 11 15:42:58 2017
 
 @author: dhingratul
-Track a player annotated with Bounded box using OpenCV example and
-pyimagesearch
+Tracks the WideReciever from a single shot clip, when the offensive team is on
+left.
+
+Input: Video Clip
+Output: Tracking output
+
+Usage: python tracker_OTS.py -v "Name of video File"
+(Example)python tracker_OTS.py -v ./data/clip20.mp4
+
 """
 import cv2
 import sys
@@ -48,6 +55,6 @@ if __name__ == '__main__':
         cv2.imshow("Tracking", frame)
 
         # Exit if ESC pressed
-        k = cv2.waitKey(1) & 0xff
+        k = cv2.waitKey(30) & 0xff
         if k == 27:
                 break
