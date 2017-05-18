@@ -17,7 +17,7 @@ Detect the wide Reciever in a single shot video clip, where the offensive team i
 1. Clone this repository into workspace
 2. Install imutils using pip
 3. Run tracker_OTS.py (See source code for detailed running instructions)
-python tracker_OTS.py -v ./data/clip20.mp4
+- python tracker_OTS.py -v ./data/clip20.mp4
 
 ## License
 
