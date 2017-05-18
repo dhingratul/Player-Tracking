@@ -2,15 +2,28 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu May 11 15:42:58 2017
-
 @author: dhingratul
+
 Tracks the WideReciever from a single shot clip, when the offensive team is on
-left.
+left, using the helper function detect.py
 
-Input: Video Clip
-Output: Tracking output
+Dependencies
+----------
+detect.py
 
-Usage: python tracker_OTS.py -v "Name of video File"
+Parameters
+----------
+arg1 : cv2.VideoCapture
+    Video File
+
+Returns
+-------
+void
+    Bounding box tracking of wide reciever for the clip
+
+Usage
+-------
+python tracker_OTS.py -v "Name of video File"
 (Example)python tracker_OTS.py -v ./data/clip20.mp4
 
 """
@@ -25,6 +38,7 @@ if __name__ == '__main__':
     ctr = 0
     tracker = cv2.Tracker_create("KCF")
     video = cv2.VideoCapture(args["video"])
+    print(type(video))
     if not video.isOpened():
         print("Could not open video")
         sys.exit()

@@ -2,17 +2,29 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu May 11 13:00:50 2017
-
 @author: dhingratul
+
 Helper function to detect the first instance of bounding box for the wide
 reciever based on location
 
-Dependencies:imutils
+Dependencies
+----------
+imutils
 
-Usage: Run from tracker_OTS.py
+Parameters
+----------
+arg1 : numpy array
+    Image file
 
-Input: Image
-Output: Bounding Box for first detection
+Returns
+-------
+tuple
+    Bounding Box detection for wide reciever
+
+Usage
+-------
+Run from tracker_OTS.py
+
 """
 
 from imutils.object_detection import non_max_suppression
