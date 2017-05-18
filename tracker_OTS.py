@@ -24,7 +24,7 @@ void
 Usage
 -------
 python tracker_OTS.py -v "Name of video File"
-(Example)python tracker_OTS.py -v ./data/clip20.mp4
+(Example)python tracker_OTS.py -v ./data/clip1.mp4
 
 """
 import cv2
