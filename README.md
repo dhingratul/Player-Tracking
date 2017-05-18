@@ -21,7 +21,7 @@ Detect the wide Reciever in a single shot video clip, where the offensive team i
 
 ## License
 
-This software is released under the [MIT License]
+This source code is released under the [MIT License]
 
 ## Credits
 - OpenCV documentation
