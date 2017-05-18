@@ -36,20 +36,20 @@ def wideReciever(image):
     hog = cv2.HOGDescriptor()
     hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
     orig = image.copy()
-    (rects, weights) = hog.detectMultiScale(image, winStride=(2, 2),
-                                            padding=(8, 8), scale=1)
+    (tracks, weights) = hog.detectMultiScale(image, winStride=(2, 2),
+                                             padding=(8, 8), scale=1)
 
-    for (x, y, w, h) in rects:
+    for (x, y, w, h) in tracks:
         cv2.rectangle(orig, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
-    rects = np.array([[x, y, x + w, y + h] for (x, y, w, h) in rects])
-    pick = non_max_suppression(rects, probs=None, overlapThresh=0.65)
+    tracks = np.array([[x, y, x + w, y + h] for (x, y, w, h) in tracks])
+    NMS = non_max_suppression(tracks, probs=None, overlapThresh=0.65)
 
-    # Wide Reciever: The one with the maximum x-cordinate
-    idx = np.argmax(pick[:, 3])
-    cv2.rectangle(image, (pick[idx, 0], pick[idx, 1]), (pick[idx, 2],
-                  pick[idx, 3]), (0, 255, 0), 2)
-    # Return it as x,y,w,h
-    bbox = (pick[idx, 0], pick[idx, 1], pick[idx, 2]-pick[idx, 0],
-            pick[idx, 3]-pick[idx, 1])
+    # Wide Reciever: The one with the maximum y-cordinate
+    idx = np.argmax(NMS[:, 3])
+    cv2.rectangle(image, (NMS[idx, 0], NMS[idx, 1]), (NMS[idx, 2],
+                  NMS[idx, 3]), (0, 255, 0), 2)
+    # Return it as x,y,w,h for Tracker_OTS
+    bbox = (NMS[idx, 0], NMS[idx, 1], NMS[idx, 2]-NMS[idx, 0],
+            NMS[idx, 3]-NMS[idx, 1])
     return bbox

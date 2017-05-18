@@ -42,13 +42,13 @@ if __name__ == '__main__':
     if not video.isOpened():
         print("Could not open video")
         sys.exit()
-    frame_init, frame = video.read()
+    frame_0, frame = video.read()
     if ctr == 0:
         # Define an initial bounding box
         bbox = dt.wideReciever(frame)
         ctr = 1
-    if not frame_init:
-        print('Error: Cannot read video file')
+    if not frame_0:
+        print('Error: Unable to read the video file')
         sys.exit()
 
     ok = tracker.init(frame, bbox)
